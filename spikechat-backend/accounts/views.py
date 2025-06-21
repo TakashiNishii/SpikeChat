@@ -48,7 +48,7 @@ class SignUpView(APIView, Authentication):
     if not name or not email or not password:
       raise AuthenticationFailed
 
-    signup = self.signup(email, password)
+    signup = self.signup(name, email, password)
 
     if not signup:
       raise AuthenticationFailed
