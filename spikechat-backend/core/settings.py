@@ -47,12 +47,13 @@ INSTALLED_APPS = [
     # Rest Frame
     'rest_framework',
 
-    #CORS
+    # CORS
     'corsheaders',
 
     # Apps
     'accounts',
     'attachments',
+    'chats',
 ]
 
 MIDDLEWARE = [
