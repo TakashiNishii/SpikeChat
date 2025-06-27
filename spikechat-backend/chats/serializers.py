@@ -8,7 +8,7 @@ from attachments.models import FileAttachment, AudioAttachment
 from attachments.serializers import FileAttachmentSerializer, AudioAttachmentSerializer
 
 
-class ChatMessageSerializer(serializers.ModelSerializer):
+class ChatSerializer (serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
     unseen_count = serializers.SerializerMethodField()
     last_message = serializers.SerializerMethodField()
@@ -30,7 +30,7 @@ class ChatMessageSerializer(serializers.ModelSerializer):
         unseen_count = ChatMessage.objects.filter(
             chat_id=chat.id,
             viewed_at__isnull=True,
-            deleted_at__isnull=True,
+            deleted_at__isnull=True
         ).exclude(
             from_user=self.context['user_id']
         ).count()
@@ -44,7 +44,7 @@ class ChatMessageSerializer(serializers.ModelSerializer):
         if not last_message:
             return None
 
-        return ChatMessageSerializer(last_message).data
+        return ChatMessagesSerializer(last_message).data
 
 
 class ChatMessagesSerializer(serializers.ModelSerializer):
