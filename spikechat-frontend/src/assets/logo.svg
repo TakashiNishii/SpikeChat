@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Spikechat Logo</title>
+  <desc id="desc">Speech bubble with spikes and typing indicator dots, with the word SPIKECHAT below.</desc>
+  <defs>
+    <style>
+      .primary { fill: #0B2441; }
+      .muted { fill: #0B2441; opacity: 0.9; }
+    </style>
+  </defs>
+
+  <!-- Speech bubble body -->
+  <g id="mark" transform="translate(0, 40)">
+    <!-- Outer spikes: 10 triangles around a circle -->
+    <g id="spikes" class="primary">
+      <!-- Spikes generated manually for symmetry -->
+      <polygon points="512,80 534,28 490,28"/>
+      <polygon points="653,118 701,85 663,64"/>
+      <polygon points="754,220 808,206 782,170"/>
+      <polygon points="792,360 844,360 827,318"/>
+      <polygon points="754,500 782,550 808,514"/>
+      <polygon points="653,602 663,656 701,636"/>
+      <polygon points="512,640 490,692 534,692"/>
+      <polygon points="371,602 323,636 361,656"/>
+      <polygon points="270,500 216,514 242,550"/>
+      <polygon points="232,360 180,360 197,402"/>
+      <polygon points="270,220 242,170 216,206"/>
+      <polygon points="371,118 361,64 323,85"/>
+    </g>
+
+    <!-- Bubble (circle + tail) -->
+    <g id="bubble" class="primary">
+      <circle cx="512" cy="360" r="200"/>
+      <!-- Tail -->
+      <path d="M 512 560 C 460 590 428 615 412 655 C 404 675 402 699 404 720 C 430 705 457 700 480 702 C 525 706 562 694 598 672 C 555 652 524 612 512 560 Z" />
+    </g>
+
+    <!-- Inner bubble knockout to keep the bubble as a ring? No: we want solid bubble with dots -->
+    <!-- Typing indicator dots -->
+    <g id="dots" class="muted" transform="translate(0, 0)">
+      <circle cx="452" cy="360" r="18" fill="#ffffff"/>
+      <circle cx="512" cy="360" r="18" fill="#ffffff"/>
+      <circle cx="572" cy="360" r="18" fill="#ffffff"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="512" y="900" text-anchor="middle" font-size="120" font-weight="800" font-family="Inter, Poppins, Segoe UI, Helvetica, Arial, sans-serif" class="primary">SPIKECHAT</text>
+</svg>
