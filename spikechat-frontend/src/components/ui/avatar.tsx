@@ -7,17 +7,24 @@ import { cn } from "@/lib/utils"
 
 function Avatar({
   className,
+  isOnline,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
+}: React.ComponentProps<typeof AvatarPrimitive.Root> & { isOnline?: boolean }) {
   return (
-    <AvatarPrimitive.Root
-      data-slot="avatar"
-      className={cn(
-        "relative flex size-8 shrink-0 overflow-hidden rounded-full",
-        className
+    <div className="relative">
+      {isOnline && (
+        <div className="absolute bg-emerald-400 z-10 rounded-full border-slate-300 size-3 bottom-0.5 right-0" />
       )}
-      {...props}
-    />
+
+      <AvatarPrimitive.Root
+        data-slot="avatar"
+        className={cn(
+          "relative flex size-8 shrink-0 overflow-hidden rounded-full",
+          className
+        )}
+        {...props}
+      />
+    </div>
   )
 }
 
