@@ -57,7 +57,7 @@ export const SignUpPage = () => {
   }
 
   return (
-    <main className="h-[calc(100vh-4rem))] flex items-center justify-center overflow-auto px-6">
+    <main className="h-app flex items-center justify-center overflow-auto px-6">
       <Card className="w-96">
         <CardHeader>
           <CardTitle>Crie uma conta</CardTitle>

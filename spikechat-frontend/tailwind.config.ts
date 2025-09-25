@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       height: {
         header: "var(--header-height)",
-        app: "var(--app-height)"
+        app: "calc(100vh - 4rem)"
       },
       colors: {
         border: "var(--color-border)",
