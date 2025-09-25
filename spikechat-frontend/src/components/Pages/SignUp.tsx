@@ -9,6 +9,20 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { handleSignUp } from "../../lib/server/auth"
 import { toast } from "sonner"
 
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Button } from "../ui/button"
+import { Skeleton } from "../ui/skeleton"
+import { Input } from "../ui/input"
+
 export const SignUpPage = () => {
   const [loading, setLoading] = useState(false)
 
@@ -41,4 +55,77 @@ export const SignUpPage = () => {
     // Redirect to home
     router.push("/")
   }
+
+  return (
+    <main className="h-[calc(100vh-4rem))] flex items-center justify-center overflow-auto px-6">
+      <Card className="w-96">
+        <CardHeader>
+          <CardTitle>Crie uma conta</CardTitle>
+          <CardDescription>Insira seu nome, email e senha para criar uma conta.</CardDescription>
+        </CardHeader>
+
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div className="space-y-3">
+                {loading ?
+                  <>
+                    {...Array({ length: 3 }).map((_, key) => (
+                      <Skeleton key={key} className="h-10 rounded-md" />
+                    ))}
+                  </>
+                  :
+                  <>
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nome</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Ex: João da Silva" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Ex: joao@email.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="password"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Senha</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Ex: 123456" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                }
+              </div>
+
+              <Button disabled={loading}>Registrar</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+    </main>
+  )
 }

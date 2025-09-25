@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { toast } from "sonner"
-import Logo from "@/assets/logo.svg"
+import Logo from "@/assets/logo.png"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Home, Sun, Moon, Menu, ChevronDown, User, LogOut } from "lucide-react"
@@ -36,11 +36,12 @@ export const Header = () => {
     <header className="h-header px-2 bg-slate-100 dark:bg-slate-900 border-b border-slate-50 dark:border-slate-800">
       <nav className="flex items-center justify-between h-full max-w-7xl mx-auto">
         <div className="hidden min-[480px]:block">
-          <Link href='/'>
+          <Link href='/' className="max-h-[100px]">
             <Image
               src={Logo}
               alt="Logo GRF Talk"
-              width={170}
+              width={300}
+              height={100}
               priority
             />
           </Link>

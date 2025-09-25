@@ -66,7 +66,7 @@ export const LeftSide = ({ variant = "desktop" }: Props) => {
   }, [currentChat])
 
   return (
-    <div className={`bg-slate-100 dark:bg-slate-900 border-r border-slate-50 dark:border-slate-800 ${variant === "mobile" ? 'w-auto' : 'w-96'} h-app overflow-auto`}>
+    <div className={`bg-slate-100 dark:bg-slate-900 border-r border-slate-50 dark:border-slate-800 ${variant === "mobile" ? 'w-auto' : 'w-96'} h-[calc(100vh-4rem))] overflow-auto`}>
       <NewChat />
 
       <div className="px-3 py-1 sticky top-0 w-full z-20 bg-slate-100 dark:bg-slate-900">
