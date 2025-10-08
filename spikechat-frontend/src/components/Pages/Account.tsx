@@ -75,7 +75,7 @@ export const AccountPage = () => {
   }
 
   return (
-    <main className="h-app flex items-center justify-center overflow-auto px-6">
+    <main className="h-[calc(100vh-4rem))] flex items-center justify-center overflow-auto px-6">
       <Card className="w-full sm:w-[450px]">
         <CardContent>
           <Form {...form}>
