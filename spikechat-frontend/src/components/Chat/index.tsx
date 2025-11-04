@@ -6,6 +6,10 @@ import { toast } from "sonner";
 import { MarkMessageAsSeenEvent, UpdateMessageEvent } from "../../types/Message";
 import { socket } from "../Layouts/Providers";
 import dayjs from "dayjs";
+import { Header } from "./Header";
+import { ScaleLoader } from "react-spinners";
+import { MessageItem } from "./MessageItem";
+import { Footer } from "./Footer";
 
 export const Chat = () => {
   const { chat, chatMessages, loading, setLoading, setChatMessages } = useChatStore();
@@ -108,4 +112,30 @@ export const Chat = () => {
       socket.off('mark_messages_as_seen', handleMarkMessageAsSeen);
     }
   }, [chatMessages])
+
+  return (
+    <div className="flex flex-col h-full">
+      <Header />
+
+      <div className="flex-1 overflow-auto">
+        {loading ? (
+          <div className="flex items-center justify-center h-full">
+            <ScaleLoader color="#493CDD" />
+          </div>
+        ) : (
+          <div className="space-y-8 p-7" ref={bodyMessagesRef}>
+            {chatMessages?.map(data => (
+              <div key={data.id} className={`flex ${data.from_user.id === user?.id ? 'justify-end' : 'justify-start'}`}>
+                <MessageItem data={data} onDelete={handleDeleteMessage} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <Footer
+        onSendMessage={handleSendMessage}
+      />
+    </div>
+  )
 }
