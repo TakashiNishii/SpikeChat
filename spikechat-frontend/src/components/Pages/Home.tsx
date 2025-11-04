@@ -10,7 +10,7 @@ export const HomePage = () => {
   const { chat, setShowNewChat } = useChatStore()
 
   return (
-    <div className="h-app">
+    <div className="h-[calc(84dvh))]">
       {chat ?
         <Chat />
         :
